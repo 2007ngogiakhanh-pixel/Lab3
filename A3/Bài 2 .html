@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tính tuổi</title>
+</head>
+<body>
+    <h2>CHƯƠNG TRÌNH TÍNH TUỔI</h2>
+    <label for="birthYear">Nhập năm sinh:</label>
+    <input type="number" id="birthYear" placeholder="Nhập năm sinh...">
+    <br><br>
+    <button onclick="calculateAge()">Tính Tuổi</button>
+    <p id="result"></p>
+
+    <script>
+        function calculateAge() {
+            const birthYear = document.getElementById("birthYear").value;
+            const currentYear = new Date().getFullYear();
+            const age = currentYear - birthYear;
+
+            document.getElementById("result").innerText = `Số tuổi của bạn là: ${age}`;
+        }
+    </script>
+</body>
+</html>

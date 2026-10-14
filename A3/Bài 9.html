@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Quay thưởng may mắn</title>
+</head>
+<body>
+	<h1>Quay thưởng may mắn</h1>
+	<button id="spinButton" type="button">Quay thưởng</button>
+	<p id="result" aria-live="polite">Phần thưởng: Chưa quay</p>
+
+	<script>
+		const prizes = ["một chiếc balo", "một quyển sách", "một chiếc đồng hồ", "một chuyến du lịch", "một phiếu quà tặng"];
+		const spinButton = document.getElementById("spinButton");
+		const result = document.getElementById("result");
+
+		spinButton.addEventListener("click", () => {
+			const prize = prizes[Math.floor(Math.random() * prizes.length)];
+			result.textContent = `Phần thưởng của bạn: ${prize}!`;
+		});
+	</script>
+</body>
+</html>

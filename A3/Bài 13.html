@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Chuyển đổi nhiệt độ</title>
+</head>
+<body>
+	<h1>Chuyển đổi nhiệt độ</h1>
+	<form id="temperatureForm">
+		<label for="celsius">Nhiệt độ (°C):</label>
+		<input id="celsius" type="number" step="any" required>
+		<button type="submit">Chuyển đổi</button>
+	</form>
+	<p id="result" aria-live="polite"></p>
+
+	<script>
+		const temperatureForm = document.getElementById("temperatureForm");
+		const result = document.getElementById("result");
+
+		temperatureForm.addEventListener("submit", (event) => {
+			event.preventDefault();
+
+			const celsius = Number(document.getElementById("celsius").value);
+			const fahrenheit = (9 / 5) * celsius + 32;
+			result.textContent = `${celsius} °C = ${fahrenheit} °F`;
+		});
+	</script>
+</body>
+</html>

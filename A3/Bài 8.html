@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Dự đoán nghề nghiệp</title>
+</head>
+<body>
+	<h1>Dự đoán nghề nghiệp</h1>
+	<form id="careerForm">
+		<label for="userName">Tên của bạn:</label>
+		<input id="userName" type="text" required>
+		<button type="submit">Dự đoán</button>
+	</form>
+	<p id="result" aria-live="polite"></p>
+
+	<script>
+		const careerForm = document.getElementById("careerForm");
+		const result = document.getElementById("result");
+		const careers = ["bác sĩ", "kỹ sư", "giáo viên", "đầu bếp", "nhà thiết kế", "phi hành gia"];
+
+		careerForm.addEventListener("submit", (event) => {
+			event.preventDefault();
+
+			const name = document.getElementById("userName").value.trim();
+			const career = careers[Math.floor(Math.random() * careers.length)];
+			result.textContent = `${name}, nghề nghiệp tương lai của bạn là: ${career}!`;
+		});
+	</script>
+</body>
+</html>

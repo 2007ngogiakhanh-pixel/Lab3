@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Máy tính đơn giản</title>
+</head>
+<body>
+	<h1>Máy tính đơn giản</h1>
+	<p>
+		<label for="firstNumber">Số thứ nhất:</label>
+		<input id="firstNumber" type="number" step="any">
+	</p>
+	<p>
+		<label for="secondNumber">Số thứ hai:</label>
+		<input id="secondNumber" type="number" step="any">
+	</p>
+	<div id="operations">
+		<button type="button" data-operation="add">Cộng</button>
+		<button type="button" data-operation="subtract">Trừ</button>
+		<button type="button" data-operation="multiply">Nhân</button>
+		<button type="button" data-operation="divide">Chia</button>
+	</div>
+	<p id="result" aria-live="polite"></p>
+
+	<script>
+		const result = document.getElementById("result");
+
+		document.getElementById("operations").addEventListener("click", (event) => {
+			const button = event.target.closest("button[data-operation]");
+			if (!button) return;
+
+			const firstValue = document.getElementById("firstNumber").value;
+			const secondValue = document.getElementById("secondNumber").value;
+			if (firstValue === "" || secondValue === "") {
+				result.textContent = "Vui lòng nhập đủ hai số.";
+				return;
+			}
+
+			const firstNumber = Number(firstValue);
+			const secondNumber = Number(secondValue);
+			let answer;
+
+			switch (button.dataset.operation) {
+				case "add":
+					answer = firstNumber + secondNumber;
+					break;
+				case "subtract":
+					answer = firstNumber - secondNumber;
+					break;
+				case "multiply":
+					answer = firstNumber * secondNumber;
+					break;
+				case "divide":
+					if (secondNumber === 0) {
+						result.textContent = "Không thể chia cho 0.";
+						return;
+					}
+					answer = firstNumber / secondNumber;
+					break;
+			}
+
+			result.textContent = `Kết quả: ${answer}`;
+		});
+	</script>
+</body>
+</html>

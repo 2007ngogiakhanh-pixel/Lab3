@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Đoán số may mắn</title>
+</head>
+<body>
+	<h1>Đoán số may mắn</h1>
+	<form id="guessForm">
+		<label for="guess">Nhập một số từ 1 đến 10:</label>
+		<input id="guess" type="number" min="1" max="10" step="1" required>
+		<button type="submit">Đoán số</button>
+	</form>
+	<p id="result"></p>
+
+	<script>
+		const guessForm = document.getElementById("guessForm");
+		const result = document.getElementById("result");
+
+		guessForm.addEventListener("submit", (event) => {
+			event.preventDefault();
+
+			const guess = Number(document.getElementById("guess").value);
+			const luckyNumber = Math.floor(Math.random() * 10) + 1;
+
+			if (guess === luckyNumber) {
+				result.textContent = "Bạn thắng! Đoán đúng số may mắn.";
+			} else {
+				result.textContent = `Chưa may mắn! Số may mắn là ${luckyNumber}.`;
+			}
+		});
+	</script>
+</body>
+</html>

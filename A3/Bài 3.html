@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Xếp loại học lực</h2>\
+    <label for="score">Nhập điểm :</label>
+    <input type="number" id="score" placeholder="Nhập điểm...">
+    <br><br>    
+    <button onclick="classifyScore()">Xếp loại</button>
+    <p id="result"></p>
+    <script>
+        function classifyScore() {
+            const score = parseFloat(document.getElementById("score").value);
+            let ketqua = "";
+
+            if (90 <= score && score <= 100) {
+                ketqua = "A";
+            } else if (80 <= score && score < 90) {
+                ketqua = "B";
+            } else if (70 <= score && score < 80) {
+                ketqua = "C";
+            } else if (60 <= score && score < 70) {
+                ketqua = "D";
+            } else {
+                ketqua = "F";
+            }
+
+            document.getElementById("result").innerText = `Xếp loại học lực: ${ketqua}`;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Oẳn tù tì</title>
+</head>
+<body>
+	<main>
+		<h1>Oẳn tù tì</h1>
+		<p class="intro">Bạn chọn gì?</p>
+		<div class="choices" aria-label="Lựa chọn của bạn">
+			<button type="button" data-choice="Đá">Đá</button>
+			<button type="button" data-choice="Giấy">Giấy</button>
+			<button type="button" data-choice="Kéo">Kéo</button>
+		</div>
+		<section id="result" aria-live="polite" aria-atomic="true">
+			<p id="player-choice">Bạn: Chưa chọn</p>
+			<p id="computer-choice">Máy: Chưa chọn</p>
+			<p id="outcome">Hãy bắt đầu!</p>
+		</section>
+	</main>
+
+	<script>
+		const choices = ["Đá", "Giấy", "Kéo"];
+		const playerChoiceText = document.getElementById("player-choice");
+		const computerChoiceText = document.getElementById("computer-choice");
+		const outcomeText = document.getElementById("outcome");
+
+		document.querySelector(".choices").addEventListener("click", (event) => {
+			const button = event.target.closest("button[data-choice]");
+			if (!button) return;
+
+			const playerChoice = button.dataset.choice;
+			const computerChoice = choices[Math.floor(Math.random() * choices.length)];
+			const playerIndex = choices.indexOf(playerChoice);
+			const computerIndex = choices.indexOf(computerChoice);
+
+			playerChoiceText.textContent = `Bạn: ${playerChoice}`;
+			computerChoiceText.textContent = `Máy: ${computerChoice}`;
+
+			if (playerIndex === computerIndex) {
+				outcomeText.textContent = "Hòa!";
+			} else if ((playerIndex - computerIndex + choices.length) % choices.length === 1) {
+				outcomeText.textContent = "Bạn thắng!";
+			} else {
+				outcomeText.textContent = "Bạn thua!";
+			}
+		});
+	</script>
+</body>
+</html>

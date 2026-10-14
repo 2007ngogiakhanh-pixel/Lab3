@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Kiểm tra mật khẩu</title>
+</head>
+<body>
+	<h1>Kiểm tra mật khẩu</h1>
+	<label for="password">Nhập mật khẩu:</label>
+	<input id="password" type="password">
+	<button id="checkButton" type="button">Kiểm tra</button>
+	<p id="result" aria-live="polite"></p>
+
+	<script>
+		const password = document.getElementById("password");
+		const result = document.getElementById("result");
+
+		document.getElementById("checkButton").addEventListener("click", () => {
+			if (password.value.length >= 8) {
+				result.textContent = "Mật khẩu hợp lệ.";
+			} else {
+				result.textContent = "Mật khẩu quá ngắn.";
+			}
+		});
+	</script>
+</body>
+</html>

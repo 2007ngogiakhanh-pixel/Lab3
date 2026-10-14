@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Kiểm tra năm nhuận</title>
+</head>
+<body>
+	<h1>Kiểm tra năm nhuận</h1>
+	<form id="yearForm">
+		<label for="year">Nhập một năm:</label>
+		<input id="year" type="number" step="1" required>
+		<button type="submit">Kiểm tra</button>
+	</form>
+	<p id="result" aria-live="polite"></p>
+
+	<script>
+		const yearForm = document.getElementById("yearForm");
+		const result = document.getElementById("result");
+
+		yearForm.addEventListener("submit", (event) => {
+			event.preventDefault();
+
+			const year = Number(document.getElementById("year").value);
+			if (!Number.isInteger(year) || year < 1) {
+				result.textContent = "Vui lòng nhập một năm hợp lệ.";
+				return;
+			}
+
+			const isLeapYear = year % 400 === 0 || (year % 4 === 0 && year % 100 !== 0);
+			result.textContent = isLeapYear ? `${year} là năm nhuận.` : `${year} không phải là năm nhuận.`;
+		});
+	</script>
+</body>
+</html>

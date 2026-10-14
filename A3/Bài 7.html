@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Xúc xắc may mắn</title>
+</head>
+<body>
+	<h1>Xúc xắc may mắn</h1>
+	<button id="rollButton" type="button">Lắc xúc xắc</button>
+	<p id="result" aria-live="polite">Kết quả: Chưa lắc</p>
+
+	<script>
+		const rollButton = document.getElementById("rollButton");
+		const result = document.getElementById("result");
+
+		rollButton.addEventListener("click", () => {
+			const number = Math.floor(Math.random() * 6) + 1;
+			result.textContent = `Kết quả: ${number}`;
+		});
+	</script>
+</body>
+</html>

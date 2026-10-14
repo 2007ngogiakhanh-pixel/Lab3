@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Máy tính tình yêu</title>
+</head>
+<body>
+    <h1>Máy tính tình yêu</h1>
+    <form id="loveForm">
+        <label for="yourName">Tên của bạn:</label>
+        <input id="yourName" type="text" required>
+        <br><br>
+        <label for="theirName">Tên người còn lại:</label>
+        <input id="theirName" type="text" required>
+        <br><br>
+        <button type="submit">Tính độ phù hợp</button>
+    </form>
+    <p id="result"></p>
+
+    <script>
+        const loveForm = document.getElementById("loveForm");
+        const result = document.getElementById("result");
+
+        loveForm.addEventListener("submit", (event) => {
+            event.preventDefault();
+
+            const yourName = document.getElementById("yourName").value.trim();
+            const theirName = document.getElementById("theirName").value.trim();
+
+            if (!yourName || !theirName) {
+                result.textContent = "Vui lòng nhập đầy đủ hai tên.";
+                return;
+            }
+
+            const score = Math.floor(Math.random() * 100) + 1;
+            result.textContent = `Độ phù hợp: ${score}%`;
+        });
+    </script>
+</body>
+</html>
